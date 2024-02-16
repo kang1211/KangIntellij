@@ -22,7 +22,6 @@ public class MemberDto {
     @NotEmpty(message="이름을 입력하세요")
     private String name;
 
-    @NotEmpty(message="비밀번호를 입력하세요")
     @Pattern(regexp = "(?=.*[0-9])(?=.*[a-z]).{4,16}", message="영어소문자, 숫자 포함 4~16 자리 로 입력하세요")
     private String password;
 

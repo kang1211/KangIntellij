@@ -1,0 +1,91 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+#main{
+    width:100%;
+    height:800px;
+    display:flex;
+    justify-content:center;
+}
+
+#signFm{
+    width:40%;
+    height:90%;
+    margin-top:10px;
+    background:rgb(255, 255, 255);
+}
+#section{
+    margin:20px;
+    padding: 0 20px;
+    height:90%;
+    /* background:pink; */
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+#tit{
+    width:100%;
+    height:20%;
+    padding-top:50px;
+    text-align:center;
+    font-size:35px;
+}
+.input-box, .sns-box{
+    width:100%;
+    height:30%;
+}
+.input-box{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+.input{
+    width:100%;
+}
+
+.input>input{
+    width:100%;
+    height:60px;
+}
+.login-sub{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+}
+.btn_type{
+    width:100%;
+    height:10%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    text-decoration:none;
+    color:black;
+    font-weight:bold;
+    background:yellow;
+    border-radius:10px;
+}
+.sns-box{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+}
+.sns-box > strong, .sns-list{
+    width:100%;
+    text-align:center;
+    margin: 20px 0;
+    color:gray;
+}
+.sns-list{
+    display:flex;
+    padding: 0 20%;
+    justify-content:space-around;
+    list-style-type:none;
+}
+.errors{
+    font-size:12px;
+    color:red;
+}

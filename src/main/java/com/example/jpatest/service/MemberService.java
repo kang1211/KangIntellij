@@ -17,4 +17,14 @@ public class MemberService {
         TestMemberEntity testMemberEntity = TestMemberEntity.toEntity(memberDto);
         testMemberRepository.save(testMemberEntity);
     }
+
+    // 로그인 처리 메서드
+    public MemberDto memberLogin(MemberDto memberDto){
+        TestMemberEntity testMemberEntity = testMemberRepository.findByEmailAndPassword(
+                memberDto.getEmail(), memberDto.getPassword());
+        if(testMemberEntity != null){// 이메일과 패스워드가 일치한다면
+            return MemberDto.toDto(testMemberEntity);
+        }
+        return null; //이메일과 패스워드가 틀리다면
+    }
 }

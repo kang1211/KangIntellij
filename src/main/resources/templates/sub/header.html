@@ -10,8 +10,19 @@
     </ul>
 
     <div class="small_menu">
-        <span><a href="/signin">로그인</a></span>
-        <span><a href="/signup">회원가입</a></span>
+        <th:block th:if="${session.user == null }">
+            <span><a href="/signin">로그인</a></span>
+            <span><a href="/signup">회원가입</a></span>
+        </th:block>
+        <th:block th:if="${session.user != null}">
+            <div class="my_select">
+                <span class="user-name" th:text="${session.user.name}" style=""></span>
+                <div class="select_info" style="display:none;width:60px; height:40px;position:absolute;right:50px;">
+                    <a href="/myinfo">마이정보</a>
+                    <a href="/logout">로그아웃</a>
+                </div>
+            </div>
+        </th:block>
     </div>
 
 </div>

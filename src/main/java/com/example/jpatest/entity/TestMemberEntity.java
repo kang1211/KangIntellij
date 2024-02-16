@@ -1,9 +1,7 @@
 package com.example.jpatest.entity;
 
 import com.example.jpatest.dto.MemberDto;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -11,6 +9,8 @@ import javax.persistence.*;
 @Setter
 @Getter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class TestMemberEntity {
 
     @Id

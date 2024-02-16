@@ -18,3 +18,12 @@
 .image_box img{
     width:100%;
 }
+.user-name:hover{
+    cursor:pointer;
+}
+.select_info > a{
+    text-align:center;
+    width:60px;
+    display:block;
+    padding-top:10px;
+}

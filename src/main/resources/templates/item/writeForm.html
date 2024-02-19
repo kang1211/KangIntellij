@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{default}">
+
+<th:block layout:fragment="css">
+    <link rel="stylesheet" th:href="@{/css/item.css }">
+</th:block>
+<th:block layout:fragment="script">
+
+</th:block>
+
+<div layout:fragment="content" id="main">
+    <form th:object="${itemDto}">
+        <div id="section">
+            <h2 id="tit">상품찾기</h2>
+            <div class="input-box">
+                <div class="input">
+                    <input type="text" placeholder="제품명" th:field="*{itemName}">
+                    <input type="text" placeholder="브랜드명" th:field="*{brand}">
+                    <input type="text" placeholder="cpu" th:field="*{cpu}">
+                    <input type="text" placeholder="inch" th:field="*{inch}">
+                    <input type="text" placeholder="ram" th:field="*{ram}">
+                    <input type="text" placeholder="as" th:field="*{as}">
+                </div>
+            </div>
+            <a class="btn_type" style="cursor:pointer">검색</a>
+        </div>
+    </form>
+</div>
+</html>

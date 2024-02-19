@@ -4,6 +4,8 @@ import com.example.jpatest.dto.MemberDto;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Setter
@@ -28,6 +30,9 @@ public class TestMemberEntity {
 
     @Column
     private String tel;
+
+    @OneToMany(mappedBy = "testMemberEntity")
+    List<LoginHistoryEntity> loginHistoryEntityList = new ArrayList<>();
 
     public static TestMemberEntity toEntity(MemberDto memberDto){
         return TestMemberEntity.builder()

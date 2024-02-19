@@ -51,8 +51,9 @@ public class MainController {
                          HttpServletRequest httpServletRequest, Model model) {
 
         //로그인처리
-        memberDto = memberService.memberLogin(memberDto);
+        memberDto = memberService.memberLogin(memberDto, httpServletRequest.getRemoteAddr());
         httpServletRequest.getSession().invalidate();
+
         if (memberDto != null){
             HttpSession session = httpServletRequest.getSession();
             session.setAttribute("user", memberDto);
@@ -75,6 +76,8 @@ public class MainController {
                        Model model){
         MemberDto memberDto = (MemberDto) httpServletRequest.getSession().getAttribute("user");
         // 현재 로그인 회원의 정보를 가져오기( 회원정보, 로그인기록)
+
+        model.addAttribute("myInfoDto", memberService.myInfo(memberDto));
 
         return "member/info";
     }

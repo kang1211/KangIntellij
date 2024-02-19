@@ -24,5 +24,6 @@ public class ItemController {
     public String writeForm(Model model){
         model.addAttribute("itemDto",new ItemDto());
         return "item/writeForm";
+
     }
 }

@@ -7,24 +7,37 @@
     <link rel="stylesheet" th:href="@{/css/item.css }">
 </th:block>
 <th:block layout:fragment="script">
-
+    <script th:src="@{/javascript/write.js }"></script>
 </th:block>
 
 <div layout:fragment="content" id="main">
-    <form th:object="${itemDto}">
+    <form method="Post" th:object="${itemDto}" th:action="@{/notebook/write}" enctype="multipart/form-data">
+        <input type="hidden" th:value="${session.user.name}" name="seller">
         <div id="section">
             <h2 id="tit">상품찾기</h2>
             <div class="input-box">
                 <div class="input">
+                    <span>제품명</span>
                     <input type="text" placeholder="제품명" th:field="*{itemName}">
+                    <span>브랜드명</span>
                     <input type="text" placeholder="브랜드명" th:field="*{brand}">
+                    <span>cpu</span>
                     <input type="text" placeholder="cpu" th:field="*{cpu}">
+                    <span>inch</span>
                     <input type="text" placeholder="inch" th:field="*{inch}">
+                    <span>ram</span>
                     <input type="text" placeholder="ram" th:field="*{ram}">
-                    <input type="text" placeholder="as" th:field="*{as}">
+                    <span>os설치여부</span>
+                    <input type="text" placeholder="os" th:field="*{os}">
+                    <span>판매금액</span>
+                    <input type="text" placeholder="판매금액" th:field="*{cost}">
+                </div>
+                <div>
+                    <input type="file" placeholder="상품이미지" name="img" id="img">
+                    <div id="preview" style="width:300px; height:200px; overflow:hidden;"></div>
                 </div>
             </div>
-            <a class="btn_type" style="cursor:pointer">검색</a>
+            <button>검색</button>
         </div>
     </form>
 </div>

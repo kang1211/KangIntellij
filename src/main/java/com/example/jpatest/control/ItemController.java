@@ -52,4 +52,28 @@ public class ItemController {
 
         return "item/detail";
     }
+
+    @GetMapping("/notebook/update/{id}")
+    public String update(@PathVariable Long id, Model model){
+
+        model.addAttribute("itemDto",itemService.getItemDtl(id));
+
+        return "item/writeForm";
+    }
+
+    @PostMapping("/notebook/update/{id}")
+    public String update(ItemDto itemDto, Model model){
+
+        itemService.updateItem(itemDto);
+
+        return "redirect:/notebook/detail/"+itemDto.getId();
+    }
+
+    @GetMapping("/notebook/delete/{id}")
+    public String delete(@PathVariable Long id, Model model){
+
+        itemService.deleteItem(id);
+
+        return "redirect:/notebook";
+    }
 }

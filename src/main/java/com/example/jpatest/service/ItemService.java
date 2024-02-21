@@ -11,9 +11,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.transaction.Transactional;
 import java.io.File;
 import java.time.LocalDateTime;
 
+@Transactional
 @Service
 public class ItemService {
     @Autowired
@@ -23,6 +25,25 @@ public class ItemService {
     private ItemImgRepo itemImgRepo;
     private Pageable pageable;
 
+    // 상품 삭제
+    public void deleteItem(Long id){
+        // 연관관계 엔티티 삭제 - 주 와 종 관계에서 종 먼저 삭제하고 주 삭제
+        itemImgRepo.deleteByItemId(id);
+        itemRepo.deleteById(id);
+    }
+
+    // 상품 수정 적용 - entity객체 수정
+    public void updateItem(ItemDto itemDto){
+        Item item = itemRepo.findById(itemDto.getId()).get();
+        item.updateItem(itemDto);
+    }
+
+    //수정 페이지
+    public ItemDto getItemDtl(Long id){
+        Item item = itemRepo.findById(id).get();
+        ItemDto itemDto = ItemDto.of(item);
+        return itemDto;
+    }
 
     // 상세페이지
     public Item detail(Long id){

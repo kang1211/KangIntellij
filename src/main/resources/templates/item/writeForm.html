@@ -11,33 +11,39 @@
 </th:block>
 
 <div layout:fragment="content" id="main">
-    <form method="Post" th:object="${itemDto}" th:action="@{/notebook/write}" enctype="multipart/form-data">
+    <form method="Post" th:object="${itemDto}" enctype="multipart/form-data">
         <input type="hidden" th:value="${session.user.name}" name="seller">
+        <input type="hidden" th:field="*{id}">
         <div id="section">
             <h2 id="tit">상품찾기</h2>
             <div class="input-box">
                 <div class="input">
                     <span>제품명</span>
-                    <input type="text" placeholder="제품명" th:field="*{itemName}">
+                    <input type="text" th:field="*{itemName}">
                     <span>브랜드명</span>
-                    <input type="text" placeholder="브랜드명" th:field="*{brand}">
+                    <input type="text" th:field="*{brand}">
                     <span>cpu</span>
-                    <input type="text" placeholder="cpu" th:field="*{cpu}">
+                    <input type="text"  th:field="*{cpu}">
                     <span>inch</span>
-                    <input type="text" placeholder="inch" th:field="*{inch}">
+                    <input type="text" th:field="*{inch}">
                     <span>ram</span>
-                    <input type="text" placeholder="ram" th:field="*{ram}">
+                    <input type="text"th:field="*{ram}">
                     <span>os설치여부</span>
-                    <input type="text" placeholder="os" th:field="*{os}">
+                    <input type="text" th:field="*{os}">
                     <span>판매금액</span>
-                    <input type="text" placeholder="판매금액" th:field="*{cost}">
+                    <input type="text" th:field="*{cost}">
                 </div>
                 <div>
                     <input type="file" placeholder="상품이미지" name="img" id="img">
                     <div id="preview" style="width:300px; height:200px; overflow:hidden;"></div>
                 </div>
             </div>
-            <button>검색</button>
+            <li th:if="${ #strings.isEmpty(itemDto.id)}">
+                <button th:formaction="@{/notebook/write}">등록</button>
+            </li>
+            <div th:unless="${ #strings.isEmpty(itemDto.id)}">
+                <button th:formaction="@{'/notebook/update/'+${itemDto.id} }">수정</button>
+            </div>
         </div>
     </form>
 </div>

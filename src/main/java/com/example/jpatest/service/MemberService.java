@@ -19,8 +19,6 @@ public class MemberService {
     LoginHistoryRepository loginHistoryRepository;
 
     public void memberInsert(MemberDto memberDto){
-
-
         TestMemberEntity testMemberEntity = TestMemberEntity.toEntity(memberDto);
         testMemberRepository.save(testMemberEntity);
     }

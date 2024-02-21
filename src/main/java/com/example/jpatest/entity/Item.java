@@ -38,6 +38,16 @@ public class Item {
     @OneToOne(mappedBy = "item")
     private ItemImg itemImg;
 
+    public void updateItem(ItemDto itemDto){
+        this.cost = itemDto.getCost();
+        this.cpu = itemDto.getCpu();
+        this.brand = itemDto.getBrand();
+        this.inch = itemDto.getInch();
+        this.ram = itemDto.getRam();
+        this.os = itemDto.getOs();
+        this.itemName = itemDto.getItemName();
+    }
+
     private static ModelMapper modelMapper=new ModelMapper();
 
     public static Item of(ItemDto itemDto){

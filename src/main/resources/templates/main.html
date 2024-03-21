@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<th:block layout:fragment="css">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</th:block>
+
+<form method="post" id="board" th:object="${boardDto}" th:action="@{/write}" class="inputBox">
+    <div style="width:500px;">
+        <span>이름</span>
+        <input type="text" th:field="*{name}">
+
+        <span>글 내용</span>
+        <input type="text" th:field="*{content}">
+    </div>
+    <button type="submit">저장</button>
+</form>
+
+<table class="board">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>이름</th>
+        <th>글 내용</th>
+        <th>작성일</th>
+        <th>삭제</th>
+    </tr>
+    </thead>
+    <tr th:each="board : ${boardList}">
+        <td th:text="${board.id}"></td>
+        <td th:text="${board.name}"></td>
+        <td th:text="${board.content}"></td>
+        <td th:text="${#temporals.format(board.regDate, 'yy.MM.dd')}"></td>
+        <td>
+            <form method="post" action="/delete" onsubmit="return confirm('정말로 삭제하시겠습니까?');">
+                <input type="hidden" name="id" th:value="${board.id}">
+                <button type="submit">삭제</button>
+            </form>
+        </td>
+    </tr>
+
+</table>
+</html>
